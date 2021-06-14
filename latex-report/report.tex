@@ -1,0 +1,56 @@
+\documentclass[]{article}
+
+\usepackage[nonatbib,preprint]{neurips_2020}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{pgffor} % for loop
+\usepackage{xstring} % for declaring lists
+
+
+
+\graphicspath{{../figures/example-figures/}}
+
+
+\title{Generalisation report}
+
+\author{%
+	Generalisation report produced by \href{https://github.com/bethgelab/model-vs-human}{model-vs-human}\\
+}
+
+
+
+\begin{document}
+
+\newcommand{\figwidth}{0.24\textwidth}
+\newcommand{\captionspace}{-1.5\baselineskip}
+\newcommand{\captionspaceII}{0.6\baselineskip}
+\newcommand{\captionspaceBenchmark}{-0.5\baselineskip}
+
+
+\maketitle
+
+%\begin{abstract}
+%\end{abstract}
+
+
+\input{assets/benchmark_figures.tex}
+\input{assets/benchmark_tables.tex}
+\input{assets/error_consistency_lineplots.tex}
+\input{assets/shape_bias.tex}
+\input{assets/consistency_vs_accuracy.tex}
+\input{assets/error_consistency_matrices.tex}
+\input{assets/error_consistency_matrices.tex}
+
+
+
+\end{document}
