@@ -1,35 +1,15 @@
-import os
+from collections import OrderedDict
+
 import torch
 import torch.nn as nn
-from collections import OrderedDict
-from torch.utils import model_zoo
-
 
 CLASSIFIER_WEIGHTS = {
-    "InsDis": "https://github.com/rgeirhos/model-vs-human/releases/download/v0.3/InsDis_classifier.pth",
-    "CMC": "https://github.com/rgeirhos/model-vs-human/releases/download/v0.3/CMC_classifier.pth",
-    "MoCo": "https://github.com/rgeirhos/model-vs-human/releases/download/v0.3/MoCo_classifier.pth",
-    "PIRL": "https://github.com/rgeirhos/model-vs-human/releases/download/v0.3/PIRL_classifier.pth",
-    "MoCoV2": "https://github.com/rgeirhos/model-vs-human/releases/download/v0.3/MoCov2_classifier.pth",
-    "InfoMin": "https://github.com/rgeirhos/model-vs-human/releases/download/v0.3/InfoMin_classifier.pth"
-}
-
-PYCONTRAST_CLASSIFIER_WEIGHTS_MLCLOUD = {
-    "InsDis": "/mnt/qb/bethge/knarayanappa/unsup_resnet50/InsDis_classifier.pth",
-    "CMC": "/mnt/qb/bethge/knarayanappa/unsup_resnet50/CMC_classifier.pth",
-    "MoCo": "/mnt/qb/bethge/knarayanappa/unsup_resnet50/MoCo_classifier.pth",
-    "PIRL": "/mnt/qb/bethge/knarayanappa/unsup_resnet50/PIRL_classifier.pth",
-    "MoCoV2": "/mnt/qb/bethge/knarayanappa/unsup_resnet50/MoCov2_classifier.pth",
-    "InfoMin": "/mnt/qb/bethge/knarayanappa/unsup_resnet50/InfoMin_classifier.pth"
-}
-
-PYCONTRAST_CLASSIFIER_WEIGHTS_GPFS = {
-    "InsDis": "/gpfs01/bethge/share/modelvshuman_models/unsup_resnet50/InsDis_classifier.pth",
-    "CMC": "/gpfs01/bethge/share/modelvshuman_models/unsup_resnet50/CMC_classifier.pth",
-    "MoCo": "/gpfs01/bethge/share/modelvshuman_models/unsup_resnet50/MoCo_classifier.pth",
-    "MoCoV2": "/gpfs01/bethge/share/modelvshuman_models/unsup_resnet50/MoCov2_classifier.pth",
-    "PIRL": "/gpfs01/bethge/share/modelvshuman_models/unsup_resnet50/PIRL_classifier.pth",
-    "InfoMin": "/gpfs01/bethge/share/modelvshuman_models/unsup_resnet50/InfoMin_classifier.pth"
+    "InsDis": "https://github.com/bethgelab/model-vs-human/releases/download/v0.2/InsDis_classifier.pth",
+    "CMC": "https://github.com/bethgelab/model-vs-human/releases/download/v0.2/CMC_classifier.pth",
+    "MoCo": "https://github.com/bethgelab/model-vs-human/releases/download/v0.2/MoCo_classifier.pth",
+    "PIRL": "https://github.com/bethgelab/model-vs-human/releases/download/v0.2/PIRL_classifier.pth",
+    "MoCoV2": "https://github.com/bethgelab/model-vs-human/releases/download/v0.2/MoCov2_classifier.pth",
+    "InfoMin": "https://github.com/bethgelab/model-vs-human/releases/download/v0.2/InfoMin_classifier.pth"
 }
 
 
@@ -44,12 +24,8 @@ def build_classifier(model_name, classes=1000):
     n_feat = 2048
 
     classifier = nn.Linear(n_feat, n_class)
-    if os.path.exists("/mnt/qb/bethge/"):
-        checkpoint = torch.load(PYCONTRAST_CLASSIFIER_WEIGHTS_MLCLOUD.get(model_name), map_location='cpu')
-    elif os.path.exists("/gpfs01/bethge/share/"):
-        checkpoint = torch.load(PYCONTRAST_CLASSIFIER_WEIGHTS_GPFS.get(model_name), map_location='cpu')
-    else:
-        raise ValueError("classifier weights not found")
+    checkpoint = torch.hub.load_state_dict_from_url(CLASSIFIER_WEIGHTS.get(model_name), map_location='cpu')
+
     state_dict = OrderedDict()
     for k, v in checkpoint["classifier"].items():
         k = k.replace('module.', '')
