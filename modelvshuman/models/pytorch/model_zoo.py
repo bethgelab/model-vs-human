@@ -3,7 +3,7 @@ import torch
 
 from ..registry import register_model
 from ..wrappers.pytorch import PyTorchModel, PyContrastPyTorchModel, ClipPyTorchModel, \
-                               ViTPyTorchModel
+    ViTPyTorchModel
 
 _PYTORCH_IMAGE_MODELS = "rwightman/pytorch-image-models"
 
@@ -558,8 +558,8 @@ def resnet50_clip_hard_labels(model_name, *args):
     import torchvision.models as zoomodels
     model = zoomodels.__dict__["resnet50"](pretrained=False)
     model = torch.nn.DataParallel(model)
-    checkpoint = torch.load("https://github.com/bethgelab/model-vs-human/releases/download/v0.3"
-                            "/ResNet50_clip_hard_labels.pth")
+    checkpoint = torch.hub.load_state_dict_from_url("https://github.com/bethgelab/model-vs-human/releases/download/v0.3"
+                                                    "/ResNet50_clip_hard_labels.pth",map_location='cpu')
     model.load_state_dict(checkpoint["state_dict"])
     return PyTorchModel(model, model_name, *args)
 
@@ -570,8 +570,7 @@ def resnet50_clip_soft_labels(model_name, *args):
     import torchvision.models as zoomodels
     model = zoomodels.__dict__["resnet50"](pretrained=False)
     model = torch.nn.DataParallel(model)
-    checkpoint = torch.load("https://github.com/bethgelab/model-vs-human/releases/download/v0.3"
-                            "/ResNet50_clip_soft_labels.pth")
+    checkpoint = torch.hub.load_state_dict_from_url("https://github.com/bethgelab/model-vs-human/releases/download/v0.3"
+                                                    "/ResNet50_clip_soft_labels.pth", map_location='cpu')
     model.load_state_dict(checkpoint["state_dict"])
     return PyTorchModel(model, model_name, *args)
-

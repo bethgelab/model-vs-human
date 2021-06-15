@@ -24,7 +24,7 @@ def build_classifier(model_name, classes=1000):
     n_feat = 2048
 
     classifier = nn.Linear(n_feat, n_class)
-    checkpoint = torch.load(CLASSIFIER_WEIGHTS.get(model_name), map_location='cpu')
+    checkpoint = torch.hub.load_state_dict_from_url(CLASSIFIER_WEIGHTS.get(model_name), map_location='cpu')
 
     state_dict = OrderedDict()
     for k, v in checkpoint["classifier"].items():
