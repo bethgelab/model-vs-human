@@ -417,6 +417,9 @@ def confusion_matrix_helper(data, output_filename,
 
     plt.savefig(output_filename, bbox_inches='tight', dpi=300)
     plt.close()
+    sns.reset_defaults()
+    sns.reset_orig()
+    plt.style.use('default')
 
 
 def plot_shape_bias_matrixplot(datasets,
@@ -632,21 +635,25 @@ def plot_matrix(datasets, analysis,
         f, ax = plt.subplots(figsize=(22, 18))
         cmap = sns.diverging_palette(230, 20, as_cmap=True)
 
-        heatmap = sns.heatmap(res["matrix"], mask=None, cmap=cmap, vmax=1.0, center=0,
+        sns.heatmap(res["matrix"], ax=ax, mask=None, cmap=cmap, vmax=1.0, center=0,
                               square=True, linewidths=2.0, cbar_kws={"shrink": .5},
                               xticklabels=True, yticklabels=True)
 
-        for i, tick_label in enumerate(heatmap.axes.get_yticklabels()):
+        for i, tick_label in enumerate(ax.axes.get_yticklabels()):
             tick_label.set_color(colors[i])
-        for i, tick_label in enumerate(heatmap.axes.get_xticklabels()):
+        for i, tick_label in enumerate(ax.axes.get_xticklabels()):
             tick_label.set_color(colors[i])
 
         figure_path = pjoin(result_dir,
                             f"{dataset.name}_{analysis.plotting_name.replace(' ', '-')}_matrix{by_mean_str}.pdf")
-        heatmap.figure.savefig(figure_path, bbox_inches='tight', pad_inches=0)
-        plt.cla()
-        plt.clf()
-        plt.close('all')
+        f.savefig(figure_path, bbox_inches='tight', pad_inches=0)
+        f.clear()
+    plt.cla()
+    plt.clf()
+    plt.close()
+    sns.reset_defaults()
+    sns.reset_orig()
+    plt.style.use('default')
 
 
 def sort_matrix_by_models_mean(result_dict):
