@@ -550,3 +550,28 @@ def BiTM_resnetv2_152x4(model_name, *args):
                            "resnetv2_152x4_bitm",
                            pretrained=True)
     return PyTorchModel(model, model_name, *args)
+
+
+@register_model("pytorch")
+def resnet50_clip_hard_labels(model_name, *args):
+    import torch
+    import torchvision.models as zoomodels
+    model = zoomodels.__dict__["resnet50"](pretrained=False)
+    model = torch.nn.DataParallel(model)
+    checkpoint = torch.load("https://github.com/bethgelab/model-vs-human/releases/download/v0.3"
+                            "/ResNet50_clip_hard_labels.pth")
+    model.load_state_dict(checkpoint["state_dict"])
+    return PyTorchModel(model, model_name, *args)
+
+
+@register_model("pytorch")
+def resnet50_clip_soft_labels(model_name, *args):
+    import torch
+    import torchvision.models as zoomodels
+    model = zoomodels.__dict__["resnet50"](pretrained=False)
+    model = torch.nn.DataParallel(model)
+    checkpoint = torch.load("https://github.com/bethgelab/model-vs-human/releases/download/v0.3"
+                            "/ResNet50_clip_soft_labels.pth")
+    model.load_state_dict(checkpoint["state_dict"])
+    return PyTorchModel(model, model_name, *args)
+
