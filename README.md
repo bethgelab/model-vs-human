@@ -1,6 +1,6 @@
 # modelvshuman: Does your model generalise better than humans?
 
-``modelvshuman`` is a Python library to benchmark the gap between human and machine vision. Using this library, both PyTorch and TensorFlow models can be evaluated on 17 out-of-distribution datasets with high-quality human comparison data.
+``modelvshuman`` is a Python toolbox to benchmark the gap between human and machine vision. Using this library, both PyTorch and TensorFlow models can be evaluated on 17 out-of-distribution datasets with high-quality human comparison data.
 
 ## :trophy: Benchmark
 
@@ -106,7 +106,7 @@ Adding a new model is possible for standard PyTorch and TensorFlow models. Depen
 
 
 ## :file_folder: Datasets
-In total, 17 datasets with human comparison data collected under highly controlled laboratory conditions are available.
+In total, 17 datasets with human comparison data collected under highly controlled laboratory conditions in the [Wichmannlab](http://www.wichmannlab.org) are available.
 
 Twelve datasets correspond to parametric or binary image distortions. Top row: colour/grayscale, contrast, high-pass, low-pass (blurring), phase noise, power equalisation. Bottom row: opponent colour, rotation, Eidolon I, II and III, uniform noise.
 ![noise-stimuli](./assets/stimuli_visualizations/noise-stimuli-figure/all_noise-generalisation_stimuli.png  "noise-stimuli")
@@ -130,6 +130,8 @@ Similarly, if you're interested in just loading a dataset, you can do this via:
 
 ## :credit_card: Credit
 
-We collected psychophysical data ourselves, but we used existing image dataset sources. 12 datasets were obtained from [Generalisation in humans and deep neural networks](http://papers.nips.cc/paper/7982-generalisation-in-humans-and-deep-neural-networks.pdf). 3 datasets were obtained from [ImageNet-trained CNNs are biased towards texture; increasing shape bias improves accuracy and robustness](https://openreview.net/forum?id=Bygh9j09KX). Additionally, we used 1 dataset from [Learning Robust Global Representations by Penalizing Local Predictive Power](https://arxiv.org/abs/1905.13549) (sketch images from ImageNet-Sketch) and 1 dataset from [ImageNet-trained CNNs are biased towards texture; increasing shape bias improves accuracy and robustness](https://openreview.net/forum?id=Bygh9j09KX) (stylized images from Stylized-ImageNet).
+Psychophysical data were collected by us in the vision laboratory of the [Wichmannlab](http://www.wichmannlab.org).
+
+While the psychophysical data was collected ourselves, we used existing image dataset sources. 12 datasets were obtained from [Generalisation in humans and deep neural networks](http://papers.nips.cc/paper/7982-generalisation-in-humans-and-deep-neural-networks.pdf). 4 datasets were obtained from [ImageNet-trained CNNs are biased towards texture; increasing shape bias improves accuracy and robustness](https://openreview.net/forum?id=Bygh9j09KX). Additionally, we used 1 dataset from [Learning Robust Global Representations by Penalizing Local Predictive Power](https://arxiv.org/abs/1905.13549) (sketch images from ImageNet-Sketch).
 
 We thank all model authors and repository maintainers for providing the models described above.
