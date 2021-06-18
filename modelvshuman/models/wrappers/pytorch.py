@@ -147,3 +147,33 @@ class ClipPyTorchModel(PyTorchModel):
         image_features /= image_features.norm(dim=-1, keepdim=True)
         logits = 100. * image_features @ zeroshot_weights
         return self.to_numpy(logits)
+
+
+class EfficientNetPytorchModel(PyTorchModel):
+
+    def __init__(self, model, model_name, *args):
+        super(EfficientNetPytorchModel, self).__init__(model, model_name, *args)
+
+    def preprocess(self):
+        normalize = Normalize(mean=[0.485, 0.456, 0.406],
+                              std=[0.229, 0.224, 0.225])
+        img_size = 475
+        crop_pct = 0.936
+        scale_size = img_size / crop_pct
+        return Compose([
+            Resize(scale_size, interpolation=PIL.Image.BICUBIC),
+            CenterCrop(img_size),
+            ToTensor(),
+            normalize,
+        ])
+
+    def forward_batch(self, images):
+        assert type(images) is torch.Tensor
+        self.model.eval()
+
+        images = undo_default_preprocessing(images)
+        images = [self.preprocess()(ToPILImage()(image)) for image in images]
+        images = torch.Tensor(np.stack(images, axis=0)).to(device())
+
+        logits = self.model(images)
+        return self.to_numpy(logits)

@@ -3,9 +3,11 @@ import torch
 
 from ..registry import register_model
 from ..wrappers.pytorch import PyTorchModel, PyContrastPyTorchModel, ClipPyTorchModel, \
-    ViTPyTorchModel
+    ViTPyTorchModel, EfficientNetPytorchModel
 
 _PYTORCH_IMAGE_MODELS = "rwightman/pytorch-image-models"
+
+_EFFICIENTNET_MODELS = "rwightman/gen-efficientnet-pytorch"
 
 
 def model_pytorch(model_name, *args):
@@ -206,14 +208,6 @@ def resnet50_l2_eps5(model_name, *args):
 
 
 @register_model("pytorch")
-def noisy_student(model_name, *args):
-    model = torch.hub.load(_PYTORCH_IMAGE_MODELS,
-                           "tf_efficientnet_b0_ns",
-                           pretrained=True)
-    return PyTorchModel(model, model_name, *args)
-
-
-@register_model("pytorch")
 def efficientnet_b0(model_name, *args):
     model = torch.hub.load(_PYTORCH_IMAGE_MODELS,
                            model_name,
@@ -227,6 +221,22 @@ def efficientnet_es(model_name, *args):
                            model_name,
                            pretrained=True)
     return PyTorchModel(model, model_name, *args)
+
+
+@register_model("pytorch")
+def efficientnet_b0_noisy_student(model_name, *args):
+    model = torch.hub.load(_PYTORCH_IMAGE_MODELS,
+                           "tf_efficientnet_b0_ns",
+                           pretrained=True)
+    return PyTorchModel(model, model_name, *args)
+
+
+@register_model("pytorch")
+def efficientnet_l2_noisy_student_475(model_name, *args):
+    model = torch.hub.load(_EFFICIENTNET_MODELS,
+                           "tf_efficientnet_l2_ns_475",
+                           pretrained=True)
+    return EfficientNetPytorchModel(model, model_name, *args)
 
 
 @register_model("pytorch")
