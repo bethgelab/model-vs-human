@@ -208,14 +208,6 @@ def resnet50_l2_eps5(model_name, *args):
 
 
 @register_model("pytorch")
-def noisy_student(model_name, *args):
-    model = torch.hub.load(_PYTORCH_IMAGE_MODELS,
-                           "tf_efficientnet_b0_ns",
-                           pretrained=True)
-    return PyTorchModel(model, model_name, *args)
-
-
-@register_model("pytorch")
 def efficientnet_b0(model_name, *args):
     model = torch.hub.load(_PYTORCH_IMAGE_MODELS,
                            model_name,
@@ -232,17 +224,17 @@ def efficientnet_es(model_name, *args):
 
 
 @register_model("pytorch")
-def tf_efficientnet_l2_ns(model_name, *args):
-    model = torch.hub.load(_EFFICIENTNET_MODELS,
-                           model_name,
+def efficientnet_b0_noisy_student(model_name, *args):
+    model = torch.hub.load(_PYTORCH_IMAGE_MODELS,
+                           "tf_efficientnet_b0_ns",
                            pretrained=True)
     return PyTorchModel(model, model_name, *args)
 
 
 @register_model("pytorch")
-def tf_efficientnet_l2_ns_475(model_name, *args):
+def efficientnet_l2_noisy_student_475(model_name, *args):
     model = torch.hub.load(_EFFICIENTNET_MODELS,
-                           model_name,
+                           "tf_efficientnet_l2_ns_475",
                            pretrained=True)
     return EfficientNetPytorchModel(model, model_name, *args)
 
