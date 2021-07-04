@@ -1,3 +1,4 @@
+import math
 import PIL
 import clip
 import numpy as np
@@ -159,7 +160,7 @@ class EfficientNetPytorchModel(PyTorchModel):
                               std=[0.229, 0.224, 0.225])
         img_size = 475
         crop_pct = 0.936
-        scale_size = img_size / crop_pct
+        scale_size = int(math.floor(img_size / crop_pct)) 
         return Compose([
             Resize(scale_size, interpolation=PIL.Image.BICUBIC),
             CenterCrop(img_size),
