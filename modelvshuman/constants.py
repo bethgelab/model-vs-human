@@ -7,7 +7,7 @@ from os.path import join as pjoin
 # DIRECTORIES
 ##################################################################
 
-PROJ_DIR = str(os.environ.get("MODELVSHUMANDIR", "model_vs_human"))
+PROJ_DIR = str(os.environ.get("MODELVSHUMANDIR", "model-vs-human"))
 assert (PROJ_DIR != "None"), "Please set the datasets path 'MODELVSHUMANDIR' environment variable"
 CODE_DIR = pjoin(PROJ_DIR, "modelvshuman")
 DATASET_DIR = pjoin(PROJ_DIR, "datasets")
