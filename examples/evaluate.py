@@ -25,4 +25,4 @@ if __name__ == "__main__":
     # 1. evaluate models on out-of-distribution datasets
     run_evaluation()
     # 2. plot the evaluation results
-    run_plotting()
+    #run_plotting()
