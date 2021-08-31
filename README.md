@@ -90,6 +90,15 @@ If you just want to load a model from the model zoo, this is what you can do:
     model = efficientnet_b0("efficientnet_b0")
 ```
 
+Then, the model can be evaluated via:
+
+```python
+    output_numpy = model.forward_batch(images)
+    
+    # by default, type(output) is numpy.ndarray, which can be converted to a tensor via:
+    output_tensor = torch.tensor(output_numpy)
+```
+
 ##### How to list all available models
 
 All implemented models are registered by the model registry, which can then be used to list all available models of a certain framework with the following method:
