@@ -141,6 +141,7 @@ class ClipPyTorchModel(PyTorchModel):
         images = undo_default_preprocessing(images)
         images = [self.preprocess()(ToPILImage()(image)) for image in images]
         images = torch.Tensor(np.stack(images, axis=0))
+        images = images.to(device())
 
         self.model.eval()
         zeroshot_weights = self.zeroshot_classifier(imagenet_classes, imagenet_templates)
