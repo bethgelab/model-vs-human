@@ -110,7 +110,8 @@ class ClipPyTorchModel(PyTorchModel):
 
     def __init__(self, model, model_name, *args):
         super(ClipPyTorchModel, self).__init__(model, model_name, *args)
-
+        self.zeroshot_weights=None
+        
     def zeroshot_classifier(self, classnames, templates):
         with torch.no_grad():
             zeroshot_weights = []
@@ -144,10 +145,12 @@ class ClipPyTorchModel(PyTorchModel):
         images = images.to(device())
 
         self.model.eval()
-        zeroshot_weights = self.zeroshot_classifier(imagenet_classes, imagenet_templates)
+        
+        if self.zeroshot_weights is None:
+            self.zeroshot_weights = self.zeroshot_classifier(imagenet_classes, imagenet_templates)
         image_features = self.model.encode_image(images)
         image_features /= image_features.norm(dim=-1, keepdim=True)
-        logits = 100. * image_features @ zeroshot_weights
+        logits = 100. * image_features @ self.zeroshot_weights
         return self.to_numpy(logits)
 
 
