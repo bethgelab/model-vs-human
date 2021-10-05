@@ -11,7 +11,6 @@ _EFFICIENTNET_MODELS = "rwightman/gen-efficientnet-pytorch"
 
 
 def model_pytorch(model_name, *args):
-    import torch
     import torchvision.models as zoomodels
     model = zoomodels.__dict__[model_name](pretrained=True)
     model = torch.nn.DataParallel(model)
@@ -41,7 +40,6 @@ def resnet50_trained_on_SIN_and_IN_then_finetuned_on_IN(model_name, *args):
 
 @register_model("pytorch")
 def bagnet9(model_name, *args):
-    import torch
     from .bagnets.pytorchnet import bagnet9
     model = bagnet9(pretrained=True)
     model = torch.nn.DataParallel(model)
@@ -50,7 +48,6 @@ def bagnet9(model_name, *args):
 
 @register_model("pytorch")
 def bagnet17(model_name, *args):
-    import torch
     from .bagnets.pytorchnet import bagnet17
     model = bagnet17(pretrained=True)
     model = torch.nn.DataParallel(model)
@@ -59,7 +56,6 @@ def bagnet17(model_name, *args):
 
 @register_model("pytorch")
 def bagnet33(model_name, *args):
-    import torch
     from .bagnets.pytorchnet import bagnet33
     model = bagnet33(pretrained=True)
     model = torch.nn.DataParallel(model)
@@ -564,7 +560,6 @@ def BiTM_resnetv2_152x4(model_name, *args):
 
 @register_model("pytorch")
 def resnet50_clip_hard_labels(model_name, *args):
-    import torch
     import torchvision.models as zoomodels
     model = zoomodels.__dict__["resnet50"](pretrained=False)
     model = torch.nn.DataParallel(model)
@@ -576,7 +571,6 @@ def resnet50_clip_hard_labels(model_name, *args):
 
 @register_model("pytorch")
 def resnet50_clip_soft_labels(model_name, *args):
-    import torch
     import torchvision.models as zoomodels
     model = zoomodels.__dict__["resnet50"](pretrained=False)
     model = torch.nn.DataParallel(model)
