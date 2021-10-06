@@ -39,7 +39,7 @@ winner            |  model                         |   OOD accuracy &#8593;    |
 
 ## :wrench: Installation
 
-Simply clone the repository to a location of your choice and follow these steps:
+Simply clone the repository to a location of your choice and follow these steps (requires ``python3.8``):
 
 
 1. Set the repository home path by running the following from the command line:
