@@ -141,9 +141,9 @@ def get_comparison_decision_makers(df, include_humans=True,
                            color=green1, marker="v", df=df,
                            plotting_name="ViT-B (14M)"))
 
-    d.append(DecisionMaker(name_pattern="noisy_student",
+    d.append(DecisionMaker(name_pattern="efficientnet_l2_noisy_student_475",
                            color=metallic, marker="o", df=df,
-                           plotting_name="Noisy Student: ENetB0 (300M)"))
+                           plotting_name="Noisy Student: ENetL2 (300M)"))
  
     if humans_last:
         d.append(DecisionMaker(name_pattern="clip",
