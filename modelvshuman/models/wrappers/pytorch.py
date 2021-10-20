@@ -110,13 +110,13 @@ class ClipPyTorchModel(PyTorchModel):
 
     def __init__(self, model, model_name, *args):
         super(ClipPyTorchModel, self).__init__(model, model_name, *args)
-        self.zeroshot_weights=self.get_zeroshot_weights(imagenet_classes, imagenet_templates)
+        self.zeroshot_weights=self._get_zeroshot_weights(imagenet_classes, imagenet_templates)
         
-    def get_zeroshot_weights(self, classnames, templates):
+    def _get_zeroshot_weights(self, class_names, templates):
         with torch.no_grad():
             zeroshot_weights = []
-            for classname in tqdm(classnames):
-                texts = [template.format(classname) for template in templates]  # format with class
+            for class_name in tqdm(class_names):
+                texts = [template.format(class_name) for template in templates]  # format with class
                 texts = clip.tokenize(texts).to(device())  # tokenize
                 class_embeddings = self.model.encode_text(texts)  # embed with text encoder
                 class_embeddings /= class_embeddings.norm(dim=-1, keepdim=True)
@@ -142,7 +142,6 @@ class ClipPyTorchModel(PyTorchModel):
         images = undo_default_preprocessing(images)
         images = [self.preprocess()(ToPILImage()(image)) for image in images]
         images = torch.Tensor(np.stack(images, axis=0))
-        images = images.to(device())
 
         self.model.eval()
         
