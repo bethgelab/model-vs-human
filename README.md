@@ -21,7 +21,7 @@ winner            | model                           | accuracy difference &#8595
 :clap:            |  [SWSL](https://arxiv.org/abs/1905.00546): ResNet-50 (940M)         |                         .041 |                         .727 |                          .211 |                      11.66|
 ...               |  standard [ResNet-50](https://arxiv.org/abs/1502.01852) (1M)        |                         .087 |                         .665 |                          .208 |                      28.66|
 
-### Highest out-of-distribution robustness
+### Highest OOD (out-of-distribution) distortion robustness
 
 winner            |  model                         |   OOD accuracy &#8593;    |   rank &#8595;    |
 :----------------:|  ------------------------------| -------------------------:|------------------:|
