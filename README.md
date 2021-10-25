@@ -1,3 +1,5 @@
+![header](./assets/header/header.png "header")
+
 # modelvshuman: Does your model generalise better than humans?
 
 ``modelvshuman`` is a Python toolbox to benchmark the gap between human and machine vision. Using this library, both PyTorch and TensorFlow models can be evaluated on 17 out-of-distribution datasets with high-quality human comparison data.
