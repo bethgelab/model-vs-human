@@ -25,19 +25,19 @@ winner            | model                           | accuracy difference &#8595
 
 ### Highest OOD (out-of-distribution) distortion robustness
 
-winner            |  model                         |   OOD accuracy &#8593;    |   rank &#8595;    |
-:----------------:|  ------------------------------| -------------------------:|------------------:|
-:1st_place_medal: |  [Noisy Student](https://arxiv.org/abs/1911.04252): ENetL2 (300M)   |                  **.829** |              **1**|
-:2nd_place_medal: |  [ViT-L](https://openreview.net/forum?id=YicbFdNTTy) (14M)          |                     .733 |                  2|
-:3rd_place_medal: |  [CLIP](https://arxiv.org/abs/2103.00020): ViT-B (400M)            |                      .708 |                  3|
-:clap:            |  [ViT-L](https://openreview.net/forum?id=YicbFdNTTy) (1M)          |                      .706 |                  4|
-:clap:            |  [SWSL](https://arxiv.org/abs/1905.00546): ResNeXt-101 (940M)      |                      .698 |                  5|
-:clap:            |  [BiT-M](https://arxiv.org/abs/1912.11370): ResNet-152x2 (14M)     |                      .694 |                  6|
-:clap:            |  [BiT-M](https://arxiv.org/abs/1912.11370): ResNet-152x4 (14M)     |                      .688 |                  7|
-:clap:            |  [BiT-M](https://arxiv.org/abs/1912.11370): ResNet-101x3 (14M)     |                      .682 |                  8|
-:clap:            |  [BiT-M](https://arxiv.org/abs/1912.11370): ResNet-50x3 (14M)      |                      .679 |                  9|
-:clap:            |  [SimCLR](https://arxiv.org/abs/2002.05709): ResNet-50x4 (1M)      |                      .677 |                 10|
-...               |  standard [ResNet-50](https://arxiv.org/abs/1502.01852) (1M)       |                      .559 |                 31|
+winner            |  model                                                                       |   OOD accuracy &#8593;    |   rank &#8595;    |
+:----------------:|  ----------------------------------------------------------------------------| -------------------------:|------------------:|
+:1st_place_medal: |  [Noisy Student](https://arxiv.org/abs/1911.04252): EfficientNet-L2 (300M)   |                  **.829** |              **1**|
+:2nd_place_medal: |  [ViT-L](https://openreview.net/forum?id=YicbFdNTTy) (14M)                   |                      .733 |                  2|
+:3rd_place_medal: |  [CLIP](https://arxiv.org/abs/2103.00020): ViT-B (400M)                      |                      .708 |                  3|
+:clap:            |  [ViT-L](https://openreview.net/forum?id=YicbFdNTTy) (1M)                    |                      .706 |                  4|
+:clap:            |  [SWSL](https://arxiv.org/abs/1905.00546): ResNeXt-101 (940M)                |                      .698 |                  5|
+:clap:            |  [BiT-M](https://arxiv.org/abs/1912.11370): ResNet-152x2 (14M)               |                      .694 |                  6|
+:clap:            |  [BiT-M](https://arxiv.org/abs/1912.11370): ResNet-152x4 (14M)               |                      .688 |                  7|
+:clap:            |  [BiT-M](https://arxiv.org/abs/1912.11370): ResNet-101x3 (14M)               |                      .682 |                  8|
+:clap:            |  [BiT-M](https://arxiv.org/abs/1912.11370): ResNet-50x3 (14M)                |                      .679 |                  9|
+:clap:            |  [SimCLR](https://arxiv.org/abs/2002.05709): ResNet-50x4 (1M)                |                      .677 |                 10|
+...               |  standard [ResNet-50](https://arxiv.org/abs/1502.01852) (1M)                 |                      .559 |                 31|
 
 ## :wrench: Installation
 
@@ -146,3 +146,12 @@ Psychophysical data were collected by us in the vision laboratory of the [Wichma
 While the psychophysical data was collected ourselves, we used existing image dataset sources. 12 datasets were obtained from [Generalisation in humans and deep neural networks](http://papers.nips.cc/paper/7982-generalisation-in-humans-and-deep-neural-networks.pdf). 4 datasets were obtained from [ImageNet-trained CNNs are biased towards texture; increasing shape bias improves accuracy and robustness](https://openreview.net/forum?id=Bygh9j09KX). Additionally, we used 1 dataset from [Learning Robust Global Representations by Penalizing Local Predictive Power](https://arxiv.org/abs/1905.13549) (sketch images from ImageNet-Sketch).
 
 We thank all model authors and repository maintainers for providing the models described above.
+
+### Citation
+
+    @inproceedings{geirhos2021partial,
+      title={Partial success in closing the gap between human and machine vision},
+      author={Geirhos, Robert and Narayanappa, Kantharaju and Mitzkus, Benjamin and Thieringer, Tizian and Bethge, Matthias and Wichmann, Felix A and Brendel, Wieland},
+      booktitle={{Advances in Neural Information Processing Systems 34}},
+      year={2021},
+    }
