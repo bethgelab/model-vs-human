@@ -1,5 +1,14 @@
 ![header](./assets/header/header.png "header")
 
+<p align="center">
+  <a href="#trophy-benchmark">Benchmark</a> •
+  <a href="#wrench-installation">Installation</a> •
+  <a href="#microscope-user-experience">User experience</a> •
+  <a href="#camel-model-zoo">Model zoo</a> •
+  <a href="#file_folder-datasets">Datasets</a> •
+  <a href="#credit_card-credit">Credit & citation</a>
+</p>
+
 # modelvshuman: Does your model generalise better than humans?
 
 ``modelvshuman`` is a Python toolbox to benchmark the gap between human and machine vision. Using this library, both PyTorch and TensorFlow models can be evaluated on 17 out-of-distribution datasets with high-quality human comparison data.
