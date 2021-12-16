@@ -59,11 +59,13 @@ Simply clone the repository to a location of your choice and follow these steps 
     export MODELVSHUMANDIR=/absolute/path/to/this/repository/
     ```
 
-2. Install package (remove the -e option if you don't intend to add your own model or make any other changes)
+2. Within the cloned repository, install package:
 
     ```
     pip install -e .
     ```
+    
+    (The -e option makes sure that changes to the code are reflected in the package, which is important e.g. if you add your own model or make any other changes)
 
 ## :microscope: User experience
 
