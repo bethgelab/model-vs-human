@@ -103,7 +103,7 @@ If you just want to load a model from the model zoo, this is what you can do:
     model = efficientnet_b0("efficientnet_b0")
 ```
 
-Then, if you have a custom set of images that you want to evaluate the model on, load those (in the example below, called ``images'') and evaluate via:
+Then, if you have a custom set of images that you want to evaluate the model on, load those (in the example below, called ``images``) and evaluate via:
 
 ```python
     output_numpy = model.forward_batch(images)
