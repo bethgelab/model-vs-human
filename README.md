@@ -103,7 +103,7 @@ If you just want to load a model from the model zoo, this is what you can do:
     model = efficientnet_b0("efficientnet_b0")
 ```
 
-Then, the model can be evaluated via:
+Then, if you have a custom set of images that you want to evaluate the model on, load those (in the example below, called ``images'') and evaluate via:
 
 ```python
     output_numpy = model.forward_batch(images)
@@ -111,6 +111,8 @@ Then, the model can be evaluated via:
     # by default, type(output) is numpy.ndarray, which can be converted to a tensor via:
     output_tensor = torch.tensor(output_numpy)
 ```
+
+However, if you simply want to run a model through the generalisation datasets provided by the toolbox, we recommend to check the section on User experience.
 
 ##### How to list all available models
 
