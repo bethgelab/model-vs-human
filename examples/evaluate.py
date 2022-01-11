@@ -17,7 +17,8 @@ def run_plotting():
     Plot(plot_types = plot_types, plotting_definition = plotting_def,
          figure_directory_name = figure_dirname)
 
-    # You can edit plotting_definition_template as desired: this will let
+    # In examples/plotting_definition.py, you can edit
+    # plotting_definition_template as desired: this will let
     # the toolbox know which models to plot, and which colours to use etc.
 
 
