@@ -1,0 +1,20 @@
+subj,dataset_name,metric_name,performance
+simclr_resnet50x1,edge,accuracy (top-1),0.20625
+simclr_resnet50x1,silhouette,accuracy (top-1),0.5
+simclr_resnet50x1,cue-conflict,accuracy (top-1),0.2421875
+simclr_resnet50x1,colour,accuracy (top-1),0.97265625
+simclr_resnet50x1,contrast,accuracy (top-1),0.8953125
+simclr_resnet50x1,high-pass,accuracy (top-1),0.6046875
+simclr_resnet50x1,low-pass,accuracy (top-1),0.3875
+simclr_resnet50x1,phase-scrambling,accuracy (top-1),0.51875
+simclr_resnet50x1,power-equalisation,accuracy (top-1),0.85
+simclr_resnet50x1,false-colour,accuracy (top-1),0.9633928571428572
+simclr_resnet50x1,rotation,accuracy (top-1),0.74375
+simclr_resnet50x1,eidolonI,accuracy (top-1),0.45625
+simclr_resnet50x1,eidolonII,accuracy (top-1),0.40546875
+simclr_resnet50x1,eidolonIII,accuracy (top-1),0.36875
+simclr_resnet50x1,uniform-noise,accuracy (top-1),0.50703125
+simclr_resnet50x1,sketch,accuracy (top-1),0.5775
+simclr_resnet50x1,sketch,accuracy (top-5),0.76875
+simclr_resnet50x1,stylized,accuracy (top-1),0.405
+simclr_resnet50x1,stylized,accuracy (top-5),0.68375

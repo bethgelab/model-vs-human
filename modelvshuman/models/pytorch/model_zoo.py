@@ -3,7 +3,7 @@ import torch
 
 from ..registry import register_model
 from ..wrappers.pytorch import PyTorchModel, PyContrastPyTorchModel, ClipPyTorchModel, \
-    ViTPyTorchModel, EfficientNetPytorchModel
+    ViTPyTorchModel, EfficientNetPytorchModel, SwagPytorchModel
 
 _PYTORCH_IMAGE_MODELS = "rwightman/pytorch-image-models"
 
@@ -578,3 +578,39 @@ def resnet50_clip_soft_labels(model_name, *args):
                                                     "/ResNet50_clip_soft_labels.pth", map_location='cpu')
     model.load_state_dict(checkpoint["state_dict"])
     return PyTorchModel(model, model_name, *args)
+
+
+@register_model("pytorch")
+def swag_regnety_16gf_in1k(model_name, *args):
+    model = torch.hub.load("facebookresearch/swag", model="regnety_16gf_in1k")
+    return SwagPytorchModel(model, model_name, input_size=384, *args)
+
+
+@register_model("pytorch")
+def swag_regnety_32gf_in1k(model_name, *args):
+    model = torch.hub.load("facebookresearch/swag", model="regnety_32gf_in1k")
+    return SwagPytorchModel(model, model_name, input_size=384, *args)
+
+
+@register_model("pytorch")
+def swag_regnety_128gf_in1k(model_name, *args):
+    model = torch.hub.load("facebookresearch/swag", model="regnety_128gf_in1k")
+    return SwagPytorchModel(model, model_name, input_size=384, *args)
+
+
+@register_model("pytorch")
+def swag_vit_b16_in1k(model_name, *args):
+    model = torch.hub.load("facebookresearch/swag", model="vit_b16_in1k")
+    return SwagPytorchModel(model, model_name, input_size=384, *args)
+
+
+@register_model("pytorch")
+def swag_vit_l16_in1k(model_name, *args):
+    model = torch.hub.load("facebookresearch/swag", model="vit_l16_in1k")
+    return SwagPytorchModel(model, model_name, input_size=512, *args)
+
+
+@register_model("pytorch")
+def swag_vit_h14_in1k(model_name, *args):
+    model = torch.hub.load("facebookresearch/swag", model="vit_h14_in1k")
+    return SwagPytorchModel(model, model_name, input_size=518, *args)

@@ -1,0 +1,20 @@
+subj,dataset_name,metric_name,performance
+swag_regnety_128gf_in1k,colour,accuracy (top-1),0.99765625
+swag_regnety_128gf_in1k,edge,accuracy (top-1),0.85
+swag_regnety_128gf_in1k,silhouette,accuracy (top-1),0.65625
+swag_regnety_128gf_in1k,cue-conflict,accuracy (top-1),0.40859375
+swag_regnety_128gf_in1k,contrast,accuracy (top-1),0.7484375
+swag_regnety_128gf_in1k,high-pass,accuracy (top-1),0.7265625
+swag_regnety_128gf_in1k,low-pass,accuracy (top-1),0.4796875
+swag_regnety_128gf_in1k,phase-scrambling,accuracy (top-1),0.6669642857142857
+swag_regnety_128gf_in1k,power-equalisation,accuracy (top-1),0.98125
+swag_regnety_128gf_in1k,false-colour,accuracy (top-1),0.9946428571428572
+swag_regnety_128gf_in1k,rotation,accuracy (top-1),0.9765625
+swag_regnety_128gf_in1k,eidolonI,accuracy (top-1),0.49765625
+swag_regnety_128gf_in1k,eidolonII,accuracy (top-1),0.4703125
+swag_regnety_128gf_in1k,eidolonIII,accuracy (top-1),0.409375
+swag_regnety_128gf_in1k,uniform-noise,accuracy (top-1),0.6234375
+swag_regnety_128gf_in1k,sketch,accuracy (top-1),0.94
+swag_regnety_128gf_in1k,sketch,accuracy (top-5),0.99125
+swag_regnety_128gf_in1k,stylized,accuracy (top-1),0.5975
+swag_regnety_128gf_in1k,stylized,accuracy (top-5),0.83125

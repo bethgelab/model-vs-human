@@ -178,4 +178,33 @@ class EfficientNetPytorchModel(PyTorchModel):
         images = torch.Tensor(np.stack(images, axis=0)).to(device())
 
         logits = self.model(images)
+        return self.to_numpy(logits)    
+
+
+class SwagPytorchModel(PyTorchModel):
+
+    def __init__(self, model, model_name, input_size, *args):
+        super(SwagPytorchModel, self).__init__(model, model_name, *args)
+        self.input_size = input_size
+
+    def preprocess(self):
+        normalize = Normalize(mean=[0.485, 0.456, 0.406],
+                              std=[0.229, 0.224, 0.225])
+
+        return Compose([
+            Resize(self.input_size, interpolation=PIL.Image.BICUBIC),
+            CenterCrop(self.input_size),
+            ToTensor(),
+            normalize,
+        ])
+
+    def forward_batch(self, images):
+        assert type(images) is torch.Tensor
+        self.model.eval()
+
+        images = undo_default_preprocessing(images)
+        images = [self.preprocess()(ToPILImage()(image)) for image in images]
+        images = torch.Tensor(np.stack(images, axis=0)).to(device())
+
+        logits = self.model(images)
         return self.to_numpy(logits)

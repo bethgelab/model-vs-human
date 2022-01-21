@@ -120,3 +120,6 @@ VISION_TRANSFORMER_MODELS = ["vit_small_patch16_224", "vit_base_patch16_224",
 
 BIT_M_MODELS = ["BiTM_resnetv2_50x1", "BiTM_resnetv2_50x3", "BiTM_resnetv2_101x1",
                 "BiTM_resnetv2_101x3", "BiTM_resnetv2_152x2", "BiTM_resnetv2_152x4"]
+
+SWAG_MODELS = ["swag_regnety_16gf_in1k", "swag_regnety_32gf_in1k", "swag_regnety_128gf_in1k",
+               "swag_vit_b16_in1k", "swag_vit_l16_in1k", "swag_vit_h14_in1k"]

@@ -1,0 +1,20 @@
+subj,dataset_name,metric_name,performance
+swag_vit_h14_in1k,colour,accuracy (top-1),0.99609375
+swag_vit_h14_in1k,edge,accuracy (top-1),0.75
+swag_vit_h14_in1k,silhouette,accuracy (top-1),0.7
+swag_vit_h14_in1k,cue-conflict,accuracy (top-1),0.39296875
+swag_vit_h14_in1k,contrast,accuracy (top-1),0.69609375
+swag_vit_h14_in1k,high-pass,accuracy (top-1),0.71953125
+swag_vit_h14_in1k,low-pass,accuracy (top-1),0.509375
+swag_vit_h14_in1k,phase-scrambling,accuracy (top-1),0.7017857142857142
+swag_vit_h14_in1k,power-equalisation,accuracy (top-1),0.9866071428571429
+swag_vit_h14_in1k,false-colour,accuracy (top-1),0.9955357142857143
+swag_vit_h14_in1k,rotation,accuracy (top-1),0.96640625
+swag_vit_h14_in1k,eidolonI,accuracy (top-1),0.55234375
+swag_vit_h14_in1k,eidolonII,accuracy (top-1),0.478125
+swag_vit_h14_in1k,eidolonIII,accuracy (top-1),0.44609375
+swag_vit_h14_in1k,uniform-noise,accuracy (top-1),0.58671875
+swag_vit_h14_in1k,sketch,accuracy (top-1),0.96
+swag_vit_h14_in1k,sketch,accuracy (top-5),0.99125
+swag_vit_h14_in1k,stylized,accuracy (top-1),0.6225
+swag_vit_h14_in1k,stylized,accuracy (top-5),0.82625
