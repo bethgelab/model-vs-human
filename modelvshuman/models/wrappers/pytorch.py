@@ -29,7 +29,7 @@ def undo_default_preprocessing(images):
     return images
 
 
-class PyTorchModel(AbstractModel):
+class PytorchModel(AbstractModel):
 
     def __init__(self, model, model_name, *args):
         self.model = model
@@ -58,14 +58,14 @@ class PyTorchModel(AbstractModel):
         return self.to_numpy(logits)
 
 
-class PyContrastPyTorchModel(PyTorchModel):
+class PyContrastPytorchModel(PytorchModel):
     """
-    This class inherits PyTorchModel class to adapt model validation for Pycontrast pre-trained models from
+    This class inherits PytorchModel class to adapt model validation for Pycontrast pre-trained models from
     https://github.com/HobbitLong/PyContrast
     """
 
     def __init__(self, model, classifier, model_name, *args):
-        super(PyContrastPyTorchModel, self).__init__(model, model_name, args)
+        super(PyContrastPytorchModel, self).__init__(model, model_name, args)
         self.classifier = classifier
         self.classifier.to(device())
 
@@ -78,11 +78,11 @@ class PyContrastPyTorchModel(PyTorchModel):
         return self.to_numpy(output)
 
 
-class ViTPyTorchModel(PyTorchModel):
+class ViTPytorchModel(PytorchModel):
 
     def __init__(self, model, model_name, img_size=(384, 384), *args):
         self.img_size = img_size
-        super(ViTPyTorchModel, self).__init__(model, model_name, args)
+        super(ViTPytorchModel, self).__init__(model, model_name, args)
 
     def forward_batch(self, images):
         assert type(images) is torch.Tensor
@@ -106,10 +106,10 @@ class ViTPyTorchModel(PyTorchModel):
         ])
 
 
-class ClipPyTorchModel(PyTorchModel):
+class ClipPytorchModel(PytorchModel):
 
     def __init__(self, model, model_name, *args):
-        super(ClipPyTorchModel, self).__init__(model, model_name, *args)
+        super(ClipPytorchModel, self).__init__(model, model_name, *args)
         self.zeroshot_weights=self._get_zeroshot_weights(imagenet_classes, imagenet_templates)
         
     def _get_zeroshot_weights(self, class_names, templates):
@@ -151,7 +151,7 @@ class ClipPyTorchModel(PyTorchModel):
         return self.to_numpy(logits)
 
 
-class EfficientNetPytorchModel(PyTorchModel):
+class EfficientNetPytorchModel(PytorchModel):
 
     def __init__(self, model, model_name, *args):
         super(EfficientNetPytorchModel, self).__init__(model, model_name, *args)
@@ -179,3 +179,30 @@ class EfficientNetPytorchModel(PyTorchModel):
 
         logits = self.model(images)
         return self.to_numpy(logits)
+
+
+class SwagPytorchModel(PytorchModel):
+
+    def __init__(self, model, model_name, input_size, *args):
+        super(SwagPytorchModel, self).__init__(model, model_name, *args)
+        self.input_size = input_size
+
+    def preprocess(self):
+        normalize = Normalize(mean=[0.485, 0.456, 0.406],
+                              std=[0.229, 0.224, 0.225])
+
+        return Compose([
+            Resize(self.input_size, interpolation=PIL.Image.BICUBIC),
+            CenterCrop(self.input_size),
+            ToTensor(),
+            normalize,
+        ])
+
+    def forward_batch(self, images):
+        assert type(images) is torch.Tensor
+        self.model.eval()
+        images = undo_default_preprocessing(images)
+        images = [self.preprocess()(ToPILImage()(image)) for image in images]
+        images = torch.Tensor(np.stack(images, axis=0)).to(device())
+        logits = self.model(images)
+        return self.to_numpy(logits)    
