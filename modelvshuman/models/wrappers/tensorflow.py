@@ -17,7 +17,7 @@ def get_device(device=None):
     return device
 
 
-class TensorFlowModel(AbstractModel):
+class TensorflowModel(AbstractModel):
 
     def __init__(self, model, model_name, *args):
         self.model = model

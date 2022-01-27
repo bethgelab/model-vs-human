@@ -1,2 +1,2 @@
-from .pytorch import PyTorchModel
-from .tensorflow import TensorFlowModel
+from .pytorch import PytorchModel
+from .tensorflow import TensorflowModel
