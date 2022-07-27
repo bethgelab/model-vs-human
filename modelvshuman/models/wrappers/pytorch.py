@@ -127,7 +127,8 @@ class ClipPytorchModel(PytorchModel):
 
         return zeroshot_weights
 
-    def preprocess(self, n_px=224):
+    def preprocess(self):
+        n_px = self.model.visual.input_resolution
         return Compose([
             Resize(n_px, interpolation=PIL.Image.BICUBIC),
             CenterCrop(n_px),
@@ -141,7 +142,7 @@ class ClipPytorchModel(PytorchModel):
 
         images = undo_default_preprocessing(images)
         images = [self.preprocess()(ToPILImage()(image)) for image in images]
-        images = torch.Tensor(np.stack(images, axis=0))
+        images = torch.Tensor(np.stack(images, axis=0)).to(device())
 
         self.model.eval()
         
