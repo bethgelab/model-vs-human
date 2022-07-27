@@ -127,7 +127,8 @@ class ClipPytorchModel(PytorchModel):
 
         return zeroshot_weights
 
-    def preprocess(self, n_px=224):
+    def preprocess(self):
+        n_px = self.model.visual.input_resolution
         return Compose([
             Resize(n_px, interpolation=PIL.Image.BICUBIC),
             CenterCrop(n_px),
