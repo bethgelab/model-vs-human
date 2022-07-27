@@ -141,7 +141,7 @@ class ClipPytorchModel(PytorchModel):
 
         images = undo_default_preprocessing(images)
         images = [self.preprocess()(ToPILImage()(image)) for image in images]
-        images = torch.Tensor(np.stack(images, axis=0))
+        images = torch.Tensor(np.stack(images, axis=0)).to(device())
 
         self.model.eval()
         
