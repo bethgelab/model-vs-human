@@ -21,7 +21,7 @@ The top-10 models are listed here; training dataset size is indicated in bracket
 winner            | model                           | accuracy difference &#8595;  | observed consistency &#8593; | error consistency &#8593;     | mean rank &#8595;      |
 :----------------:|  ------------------------------ |-----------------------------:|-----------------------------:|------------------------------:|-----------------------:|
 :1st_place_medal: |  [ViT-22B-384](https://arxiv.org/abs/2302.05442): ViT-22B (4B)      |                     **.018** |                     **.783** |                          .258 |                 **1.67**|
-:2nd_place_medal: |  [CLIP](https://arxiv.org/abs/2103.00020): ViT-B (400M)             |                         .023 |                         .758 |                          .281 |                        3|
+:2nd_place_medal: |  [CLIP](https://arxiv.org/abs/2103.00020): ViT-B (400M)             |                         .023 |                         .758 |                      **.281** |                        3|
 :3rd_place_medal: |  [ViT-22B-560](https://arxiv.org/abs/2302.05442): ViT-22B (4B)      |                         .022 |                         .739 |                      **.281** |                     3.33|
 :clap: |  [SWSL](https://arxiv.org/abs/1905.00546): ResNeXt-101 (940M)                  |                         .028 |                         .752 |                          .237 |                        6|
 :clap: |  [BiT-M](https://arxiv.org/abs/1912.11370): ResNet-101x1 (14M)                 |                         .034 |                         .733 |                          .252 |                        7|
