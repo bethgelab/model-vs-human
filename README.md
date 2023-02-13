@@ -20,33 +20,33 @@ The top-10 models are listed here; training dataset size is indicated in bracket
 ### Most human-like behaviour
 winner            | model                           | accuracy difference &#8595;  | observed consistency &#8593; | error consistency &#8593;     | mean rank &#8595;      |
 :----------------:|  ------------------------------ |-----------------------------:|-----------------------------:|------------------------------:|-----------------------:|
-:1st_place_medal: |  [CLIP](https://arxiv.org/abs/2103.00020): ViT-B (400M)             |                     **.023** |                     **.758** |                      **.281** |                   **1.33**|
-:2nd_place_medal: |  [SWSL](https://arxiv.org/abs/1905.00546): ResNeXt-101 (940M)       |                         .028 |                         .752 |                          .237 |                          4|
-:3rd_place_medal: |  [BiT-M](https://arxiv.org/abs/1912.11370): ResNet-101x1 (14M)      |                         .034 |                         .733 |                          .252 |                       4.33|
-:clap:            |  [BiT-M](https://arxiv.org/abs/1912.11370): ResNet-152x2 (14M)      |                         .035 |                         .737 |                          .243 |                          5|
-:clap:            |  [ViT-L](https://openreview.net/forum?id=YicbFdNTTy) (1M)           |                         .033 |                         .738 |                          .222 |                       6.66|
-:clap:            |  [BiT-M](https://arxiv.org/abs/1912.11370): ResNet-152x4 (14M)      |                         .035 |                         .732 |                          .233 |                       7.66|
-:clap:            |  [BiT-M](https://arxiv.org/abs/1912.11370): ResNet-50x3 (14M)       |                         .040 |                         .726 |                          .228 |                       9.33|
-:clap:            |  [BiT-M](https://arxiv.org/abs/1912.11370): ResNet-50x1 (14M)       |                         .042 |                         .718 |                          .240 |                       9.66|
-:clap:            |  [ViT-L](https://openreview.net/forum?id=YicbFdNTTy) (14M)          |                         .035 |                         .744 |                          .206 |                       9.66|
-:clap:            |  [SWSL](https://arxiv.org/abs/1905.00546): ResNet-50 (940M)         |                         .041 |                         .727 |                          .211 |                      11.66|
-...               |  standard [ResNet-50](https://arxiv.org/abs/1502.01852) (1M)        |                         .087 |                         .665 |                          .208 |                      28.66|
+:1st_place_medal: |  [ViT-22B-384](arxiv.org/abs/2302.05442): ViT-22B (4B)              |                     **.018** |                     **.783** |                          .258 |                 **1.67**|
+:2nd_place_medal: |  [CLIP](https://arxiv.org/abs/2103.00020): ViT-B (400M)             |                         .023 |                         .758 |                          .281 |                        3|
+:3rd_place_medal: |  [ViT-22B-560](arxiv.org/abs/2302.05442): ViT-22B (4B)              |                         .022 |                         .739 |                      **.281** |                     3.33|
+:clap: |  [SWSL](https://arxiv.org/abs/1905.00546): ResNeXt-101 (940M)                  |                         .028 |                         .752 |                          .237 |                        6|
+:clap: |  [BiT-M](https://arxiv.org/abs/1912.11370): ResNet-101x1 (14M)                 |                         .034 |                         .733 |                          .252 |                        7|
+:clap:            |  [BiT-M](https://arxiv.org/abs/1912.11370): ResNet-152x2 (14M)      |                         .035 |                         .737 |                          .243 |                     7.67|
+:clap:            |  [ViT-L](https://openreview.net/forum?id=YicbFdNTTy) (1M)           |                         .033 |                         .738 |                          .222 |                     9.33|
+:clap:            |  [BiT-M](https://arxiv.org/abs/1912.11370): ResNet-152x4 (14M)      |                         .035 |                         .732 |                          .233 |                    10.33|
+:clap:            |  [BiT-M](https://arxiv.org/abs/1912.11370): ResNet-50x3 (14M)       |                         .040 |                         .726 |                          .228 |                       12|
+:clap:            |  [ViT-L](https://openreview.net/forum?id=YicbFdNTTy) (14M)          |                         .035 |                         .744 |                          .206 |                       12|
+...               |  standard [ResNet-50](https://arxiv.org/abs/1502.01852) (1M)        |                         .087 |                         .665 |                          .208 |                    31.33|
 
 ### Highest OOD (out-of-distribution) distortion robustness
 
 winner            |  model                                                                       |   OOD accuracy &#8593;    |   rank &#8595;    |
 :----------------:|  ----------------------------------------------------------------------------| -------------------------:|------------------:|
-:1st_place_medal: |  [Noisy Student](https://arxiv.org/abs/1911.04252): EfficientNet-L2 (300M)   |                  **.829** |              **1**|
-:2nd_place_medal: |  [ViT-L](https://openreview.net/forum?id=YicbFdNTTy) (14M)                   |                      .733 |                  2|
-:3rd_place_medal: |  [CLIP](https://arxiv.org/abs/2103.00020): ViT-B (400M)                      |                      .708 |                  3|
-:clap:            |  [ViT-L](https://openreview.net/forum?id=YicbFdNTTy) (1M)                    |                      .706 |                  4|
-:clap:            |  [SWSL](https://arxiv.org/abs/1905.00546): ResNeXt-101 (940M)                |                      .698 |                  5|
-:clap:            |  [BiT-M](https://arxiv.org/abs/1912.11370): ResNet-152x2 (14M)               |                      .694 |                  6|
-:clap:            |  [BiT-M](https://arxiv.org/abs/1912.11370): ResNet-152x4 (14M)               |                      .688 |                  7|
-:clap:            |  [BiT-M](https://arxiv.org/abs/1912.11370): ResNet-101x3 (14M)               |                      .682 |                  8|
-:clap:            |  [BiT-M](https://arxiv.org/abs/1912.11370): ResNet-50x3 (14M)                |                      .679 |                  9|
-:clap:            |  [SimCLR](https://arxiv.org/abs/2002.05709): ResNet-50x4 (1M)                |                      .677 |                 10|
-...               |  standard [ResNet-50](https://arxiv.org/abs/1502.01852) (1M)                 |                      .559 |                 31|
+:1st_place_medal: |  [ViT-22B-224](arxiv.org/abs/2302.05442): ViT-22B (4B)                       |                  **.837** |              **1**|
+:2nd_place_medal: |  [Noisy Student](https://arxiv.org/abs/1911.04252): EfficientNet-L2 (300M)   |                      .829 |                  2|
+:3rd_place_medal: |  [ViT-22B-384](arxiv.org/abs/2302.05442): ViT-22B (4B)                       |                      .798 |                  3|
+:clap:            |  [ViT-L](https://openreview.net/forum?id=YicbFdNTTy) (14M)                   |                      .733 |                  4|
+:clap:            |  [CLIP](https://arxiv.org/abs/2103.00020): ViT-B (400M)                      |                      .708 |                  5|
+:clap:            |  [ViT-L](https://openreview.net/forum?id=YicbFdNTTy) (1M)                    |                      .706 |                  6|
+:clap:            |  [SWSL](https://arxiv.org/abs/1905.00546): ResNeXt-101 (940M)                |                      .698 |                  7|
+:clap:            |  [BiT-M](https://arxiv.org/abs/1912.11370): ResNet-152x2 (14M)               |                      .694 |                  8|
+:clap:            |  [BiT-M](https://arxiv.org/abs/1912.11370): ResNet-152x4 (14M)               |                      .688 |                  9|
+:clap:            |  [BiT-M](https://arxiv.org/abs/1912.11370): ResNet-101x3 (14M)               |                      .682 |                 10|
+...               |  standard [ResNet-50](https://arxiv.org/abs/1502.01852) (1M)                 |                      .559 |                 34|
 
 ## :wrench: Installation
 
