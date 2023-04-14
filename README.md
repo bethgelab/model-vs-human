@@ -144,6 +144,7 @@ Similarly, if you're interested in just loading a dataset, you can do this via:
    from modelvshuman.datasets import sketch      
    dataset = sketch(batch_size=16, num_workers=4)
 ```
+Note that the datasets aren't available after installing the toolbox. Instead, they are automatically downloaded the first time a model is evaluated on the dataset (see ``examples/evaluate.py``).
 
 ##### How to list all available datasets
 ```python
