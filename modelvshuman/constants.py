@@ -58,6 +58,7 @@ PLOT_TYPE_TO_DATASET_MAPPING = {
     "error-consistency-lineplot": NOISE_GENERALISATION_DATASETS,
     "error-consistency": ["cue-conflict", "edge", "silhouette", "sketch", "stylized"],
     "benchmark-barplot": DEFAULT_DATASETS,
+    "nonparametric-benchmark-barplot": ["edge", "silhouette", "sketch", "stylized"],
     "scatterplot": DEFAULT_DATASETS,
     # 'unusual' plot types:
     "entropy": NOISE_GENERALISATION_DATASETS,

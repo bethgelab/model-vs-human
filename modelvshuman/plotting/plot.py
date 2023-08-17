@@ -130,6 +130,16 @@ def plot(plot_types,
                                    decision_maker_fun=plotting_definition,
                                    result_dir=result_dir)
 
+        elif plot_type == "nonparametric-benchmark-barplot":
+            for dataset_name in current_dataset_names:
+                datasets = get_experiments([dataset_name])
+                plot_benchmark_barplot(datasets=datasets,
+                                       decision_maker_fun=plotting_definition,
+                                       result_dir=result_dir,
+                                       print_to_latex=False,
+                                       metrics_to_plot=["OOD accuracy"],
+                                       single_dataset_name=dataset_name)
+
         elif plot_type == "scatterplot":
             plot_scatterplot(datasets=datasets,
                              decision_maker_fun=plotting_definition,
@@ -937,33 +947,33 @@ def print_benchmark_table_humanlike_to_latex(df):
                           float_format="%.3f", index=False), file=f)
 
 
-def plot_benchmark_barplot(datasets, decision_maker_fun, result_dir):
-    include_humans = True
+def plot_benchmark_barplot(datasets, decision_maker_fun, result_dir,
+                           print_to_latex=True, include_humans = True,
+                           metrics_to_plot=METRICS.keys(),
+                           single_dataset_name=None):
+
+    # data frame formatting; printing humanlike benchmark table to LaTeX
     metric_names = ["accuracy difference",
                     "observed consistency",
                     "error consistency"]
-
     df = get_raw_benchmark_df(datasets=copy.deepcopy(datasets),
                               metric_names=metric_names,
                               decision_maker_fun=decision_maker_fun,
                               include_humans=include_humans)
-
     decision_makers = decision_maker_fun(ph.get_experimental_data(datasets[0]))
     df_formatted = format_benchmark_df(df=df,
                                        decision_makers=decision_makers,
                                        metric_names=metric_names,
                                        include_humans=include_humans)
+    if print_to_latex:
+        print_benchmark_table_humanlike_to_latex(df_formatted)
 
-    print_benchmark_table_humanlike_to_latex(df_formatted)
-
-    ### plotting
-    for colname in ["OOD accuracy",
-                    "accuracy difference",
-                    "observed consistency",
-                    "error consistency"]:
+    # plotting
+    for colname in metrics_to_plot:
 
         metric_fun, metric_name = METRICS[colname]
-        logging_info = f"Plotting benchmark-barplot for metric {metric_name}"
+        logging_dataset = f"and dataset {single_dataset_name}" if single_dataset_name else ""
+        logging_info = f"Plotting benchmark-barplot for metric {metric_name} {logging_dataset}"
         logger.info(logging_info)
         print(logging_info)
 
@@ -974,7 +984,8 @@ def plot_benchmark_barplot(datasets, decision_maker_fun, result_dir):
                                          metric_name=metric_name,
                                          datasets=copy.deepcopy(datasets),
                                          decision_maker_fun=decision_maker_fun)
-            print_benchmark_table_accuracy_to_latex(df1)
+            if print_to_latex:
+                print_benchmark_table_accuracy_to_latex(df1)
         else:
             df1 = copy.deepcopy(df_formatted)
             df1["color"] = df1["model"].apply(lambda y: dm.decision_maker_to_attributes(y, decision_makers)["color"])
@@ -985,13 +996,15 @@ def plot_benchmark_barplot(datasets, decision_maker_fun, result_dir):
         names = df1["plotting_name"]
         colors = df1["color"]
 
-        if include_humans:
-            add_string = ""
-        else:
-            add_string = "_no-humans"
+        humans_add_string = "" if include_humans else "_no-humans"
 
-        barplot(path=pjoin(result_dir, f"benchmark_{metric_name.replace(' ', '-')}{add_string}.pdf"),
-                names=names, values=values, colors=colors, ylabel=colname)
+        if single_dataset_name:
+            dataset_add_string = f"{single_dataset_name}_" if single_dataset_name else ""
+            barplot(path=pjoin(result_dir, f"{single_dataset_name}_{colname.replace(' ', '-')}{humans_add_string}.pdf"),
+                    names=names, values=values, colors=colors, ylabel=colname)
+        else:
+            barplot(path=pjoin(result_dir, f"benchmark_{metric_name.replace(' ', '-')}{humans_add_string}.pdf"),
+                    names=names, values=values, colors=colors, ylabel=colname)
 
 
 def format_benchmark_df(df, decision_makers, metric_names,
