@@ -18,8 +18,8 @@ class Experiment:
 
 
 colour_experiment = Experiment(data_conditions=["cr", "bw"],
-                              plotting_conditions=["colour", "greyscale"],
-                              xlabel="Colour")
+                               plotting_conditions=["colour", "greyscale"],
+                               xlabel="Colour")
 
 contrast_experiment = Experiment(data_conditions=["c100", "c50", "c30", "c15", "c10", "c05", "c03", "c01"],
                                  plotting_conditions=["100", "50", "30", "15", "10", "5", "3", "1"],
