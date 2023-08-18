@@ -1072,7 +1072,8 @@ def barplot(path, names, values, colors, ylabel=None,
         height = rect.get_height()
         width = rect.get_width()
 
-        if "M)" in names[i]:
+        plot_arrow_for_models_trained_on_large_datasets = False
+        if "M)" in names[i] and plot_arrow_for_models_trained_on_large_datasets:
             plt.plot(rect.get_x() + rect.get_width() / 2.0 - 0.1, rect.get_height() + 0.02 * limit,
                      marker="$\u2193$", linestyle="", color="r")
         plt.text(rect.get_x() + rect.get_width() / 2.0, 0.01 * limit,
