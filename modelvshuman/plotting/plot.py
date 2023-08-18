@@ -8,6 +8,7 @@ import copy
 import logging
 import os
 from os.path import join as pjoin
+from multiprocessing import Process
 
 import matplotlib.markers as mmarkers
 import matplotlib.pyplot as plt
@@ -27,6 +28,12 @@ from ..helper import plotting_helper as ph
 from ..utils import load_dataset
 
 logger = logging.getLogger(__name__)
+
+
+##################################################################
+# PLOTTING-SPECIFIC CONSTANTS AND GLOBAL SETTINGS
+##################################################################
+
 
 # global default boundary settings for thin gray transparent
 # boundaries to avoid not being able to see the difference
@@ -65,12 +72,36 @@ EXCLUDE = True
 # Main plot function to be called by user
 ##################################################################
 
+
 def plot(plot_types,
          plotting_definition,
          dataset_names=None,
          figure_directory_name="example-figures",
-         crop_PDFs=True,
-         *args, **kwargs):
+         crop_PDFs=True):
+    """Start different processes for different plotting types to speed up plotting."""
+
+    processes = []
+    for plot_type in plot_types:
+        process = Process(target = plot_nonparallel, kwargs={"plot_types": [plot_type],
+                                                             "plotting_definition": plotting_definition,
+                                                             "dataset_names": dataset_names,
+                                                             "figure_directory_name": figure_directory_name,
+                                                             "crop_PDFs": crop_PDFs})
+        process.start()
+        processes.append(process)
+
+    for process in processes:
+        process.join()
+
+    if crop_PDFs:
+        ph.crop_pdfs_in_directory(os.path.join(consts.FIGURE_DIR, figure_directory_name))
+
+
+def plot_nonparallel(plot_types,
+                     plotting_definition,
+                     dataset_names=None,
+                     figure_directory_name="example-figures",
+                     crop_PDFs=True):
     for plot_type in plot_types:
         assert plot_type in consts.PLOT_TYPE_TO_DATASET_MAPPING.keys(), "please select plot_types from: " + str(
             consts.PLOT_TYPE_TO_DATASET_MAPPING.keys())
@@ -82,8 +113,6 @@ def plot(plot_types,
     result_dir = os.path.join(consts.FIGURE_DIR, figure_directory_name)
     if not os.path.exists(result_dir):
         os.makedirs(result_dir)
-
-    crop_dirs = [result_dir]
 
     for plot_type in plot_types:
         if dataset_names is None:
@@ -100,7 +129,8 @@ def plot(plot_types,
             plot_confusion_matrix(datasets=datasets,
                                   decision_maker_fun=plotting_definition,
                                   result_dir=confusion_matrices_dir)
-            crop_dirs.append(confusion_matrices_dir)
+            if crop_PDFs:
+                ph.crop_pdfs_in_directory(confusion_matrices_dir)
 
         elif plot_type == "accuracy":
             plot_accuracy(datasets=datasets,
@@ -152,10 +182,6 @@ def plot(plot_types,
 
         else:
             raise NotImplementedError("unknown plot_type: " + plot_type)
-
-    if crop_PDFs:
-        for d in crop_dirs:
-            ph.crop_pdfs_in_directory(d)
 
 
 ##################################################################
