@@ -1,3 +1,6 @@
+import warnings
+warnings.simplefilter(action='ignore', category=FutureWarning)
+
 from modelvshuman import Plot, Evaluate
 from modelvshuman import constants as c
 from plotting_definition import plotting_definition_template
