@@ -59,7 +59,7 @@ def get_experimental_data(dataset, print_name=False):
 
     for experiment in dataset.experiments:
         if not set(experiment.data_conditions).issubset(set(df.condition.unique())):
-            print(set(e.data_conditions))
+            print(set(experiment.data_conditions))
             print(set(df.condition.unique()))
             raise ValueError("Condition mismatch")
 
