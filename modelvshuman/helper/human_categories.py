@@ -145,21 +145,21 @@ class HumanCategories(object):
                 'n02112350', 'n02112706', 'n02113023', 'n02113624',
                 'n02113712', 'n02113799', 'n02113978'])
 
-    airplane_indices = frozenset([404])
-    bear_indices = frozenset([294, 295, 296, 297])
-    bicycle_indices = frozenset([444, 671])
-    bird_indices = frozenset([8, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 22, 23,
+    airplane_indices = [404]
+    bear_indices = [294, 295, 296, 297]
+    bicycle_indices = [444, 671]
+    bird_indices = [8, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 22, 23,
                     24, 80, 81, 82, 83, 87, 88, 89, 90, 91, 92, 93,
                     94, 95, 96, 98, 99, 100, 127, 128, 129, 130, 131,
                     132, 133, 135, 136, 137, 138, 139, 140, 141, 142,
-                    143, 144, 145])
-    boat_indices = frozenset([472, 554, 625, 814, 914])
-    bottle_indices = frozenset([440, 720, 737, 898, 899, 901, 907])
-    car_indices = frozenset([436, 511, 817])
-    cat_indices = frozenset([281, 282, 283, 284, 285, 286])
-    chair_indices = frozenset([423, 559, 765, 857])
-    clock_indices = frozenset([409, 530, 892])
-    dog_indices = frozenset([152, 153, 154, 155, 156, 157, 158, 159, 160, 161,
+                    143, 144, 145]
+    boat_indices = [472, 554, 625, 814, 914]
+    bottle_indices = [440, 720, 737, 898, 899, 901, 907]
+    car_indices = [436, 511, 817]
+    cat_indices = [281, 282, 283, 284, 285, 286]
+    chair_indices = [423, 559, 765, 857]
+    clock_indices = [409, 530, 892]
+    dog_indices = [152, 153, 154, 155, 156, 157, 158, 159, 160, 161,
                    162, 163, 164, 165, 166, 167, 168, 169, 170, 171,
                    172, 173, 174, 175, 176, 177, 178, 179, 180, 181,
                    182, 183, 184, 185, 186, 187, 188, 189, 190, 191,
@@ -169,12 +169,12 @@ class HumanCategories(object):
                    224, 225, 226, 228, 229, 230, 231, 232, 233, 234,
                    235, 236, 237, 238, 239, 240, 241, 243, 244, 245,
                    246, 247, 248, 249, 250, 252, 253, 254, 255, 256,
-                   257, 259, 261, 262, 263, 265, 266, 267, 268])
-    elephant_indices = frozenset([385, 386])
-    keyboard_indices = frozenset([508, 878])
-    knife_indices = frozenset([499])
-    oven_indices = frozenset([766])
-    truck_indices = frozenset([555, 569, 656, 675, 717, 734, 864, 867])
+                   257, 259, 261, 262, 263, 265, 266, 267, 268]
+    elephant_indices = [385, 386]
+    keyboard_indices = [508, 878]
+    knife_indices = [499]
+    oven_indices = [766]
+    truck_indices = [555, 569, 656, 675, 717, 734, 864, 867]
 
 
     def get_human_category_from_WNID(self, wnid):
