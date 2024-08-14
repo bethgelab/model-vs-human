@@ -153,6 +153,9 @@ Note that the datasets aren't available after installing the toolbox just yet. I
     print(list(datasets.list_datasets().keys()))
 ```
 
+##### Download raw test images
+If you'd like to download the test images yourself, they are availabel [here](https://github.com/bethgelab/model-vs-human/releases/tag/v0.1).
+
 ## :credit_card: Credit
 
 Psychophysical data were collected by us in the vision laboratory of the [Wichmannlab](http://www.wichmannlab.org).
