@@ -81,9 +81,9 @@ The following models are currently implemented:
 - [x] 5 self-supervised contrastive models (InsDis, MoCo, MoCoV2, InfoMin, PIRL) from the [pycontrast repo](https://github.com/HobbitLong/PyContrast/)
 - [x] 3 self-supervised contrastive SimCLR model variants (simclr_resnet50x1, simclr_resnet50x2, simclr_resnet50x4) from the [ptrnet repo](https://github.com/sacadena/ptrnets)
 - [x] 3 vision transformer variants (vit_small_patch16_224, vit_base_patch16_224 and vit_large_patch16_224) from the [pytorch-image-models repo](https://github.com/rwightman/pytorch-image-models)
-- [x] 10 adversarially "robust" models from [robust-models-transfer repo](https://github.com/microsoft/robust-models-transfer) implemented via the [ptrnet repo](https://github.com/sacadena/ptrnets)
+- [x] 10 adversarially "robust" models from [robust-models-transfer](https://arxiv.org/abs/2007.08489) implemented via the [ptrnet repo](https://github.com/sacadena/ptrnets)
 - [x] 3 "ShapeNet" ResNet-50 models with different degree of stylized training from the [texture-vs-shape repo](https://github.com/rgeirhos/texture-vs-shape)
-- [x] 3 BagNet models from the [BagNet repo](https://github.com/wielandbrendel/bag-of-feature-DNNs)
+- [x] 3 BagNets models from the [BagNets repo](https://github.com/wielandbrendel/bag-of-local-features-models#bagnets)
 - [x] 1 semi-supervised ResNet-50 model pre-trained on 940M images from the [semi-supervised-ImageNet1K-models repo](https://github.com/facebookresearch/semi-supervised-ImageNet1K-models)
 - [x] 6 Big Transfer models from the [pytorch-image-models repo](https://github.com/rwightman/pytorch-image-models)
 
