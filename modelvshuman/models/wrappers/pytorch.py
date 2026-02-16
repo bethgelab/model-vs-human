@@ -1,6 +1,6 @@
 import math
 import PIL
-import clip
+import open_clip
 import numpy as np
 import torch
 from PIL.Image import Image
@@ -117,7 +117,7 @@ class ClipPytorchModel(PytorchModel):
             zeroshot_weights = []
             for class_name in tqdm(class_names):
                 texts = [template.format(class_name) for template in templates]  # format with class
-                texts = clip.tokenize(texts).to(device())  # tokenize
+                texts = open_clip.tokenize(texts).to(device())  # tokenize
                 class_embeddings = self.model.encode_text(texts)  # embed with text encoder
                 class_embeddings /= class_embeddings.norm(dim=-1, keepdim=True)
                 class_embedding = class_embeddings.mean(dim=0)
@@ -128,7 +128,8 @@ class ClipPytorchModel(PytorchModel):
         return zeroshot_weights
 
     def preprocess(self):
-        n_px = self.model.visual.input_resolution
+        # open-clip uses image_size (a tuple) instead of input_resolution (an int)
+        n_px = self.model.visual.image_size[0] if isinstance(self.model.visual.image_size, tuple) else self.model.visual.image_size
         return Compose([
             Resize(n_px, interpolation=PIL.Image.BICUBIC),
             CenterCrop(n_px),

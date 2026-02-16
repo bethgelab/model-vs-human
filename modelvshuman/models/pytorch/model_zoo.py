@@ -484,15 +484,15 @@ def selecsls60b(model_name, *args):
 
 @register_model("pytorch")
 def clip(model_name, *args):
-    import clip
-    model, _ = clip.load("ViT-B/32")
+    import open_clip
+    model, _, _ = open_clip.create_model_and_transforms('ViT-B-32', pretrained='openai')
     return ClipPytorchModel(model, model_name, *args)
 
 
 @register_model("pytorch")
 def clipRN50(model_name, *args):
-    import clip
-    model, _ = clip.load("RN50")
+    import open_clip
+    model, _, _ = open_clip.create_model_and_transforms('RN50', pretrained='openai')
     return ClipPytorchModel(model, model_name, *args)
 
 
